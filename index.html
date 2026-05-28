@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video Play Button</title>
+
+<style>
+    body{
+        margin:0;
+        height:100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        background:black;
+        font-family:Arial, sans-serif;
+    }
+
+    .box{
+        text-align:center;
+    }
+
+    button{
+        padding:15px 35px;
+        font-size:20px;
+        border:none;
+        border-radius:10px;
+        background:green;
+        color:white;
+        cursor:pointer;
+    }
+
+    video{
+        margin-top:20px;
+        width:80%;
+        max-width:700px;
+        display:none;
+        border-radius:10px;
+    }
+</style>
+</head>
+<body>
+
+<div class="box">
+    <button onclick="playVideo()">Play Video</button>
+
+    <br>
+
+    <video id="myVideo" controls>
+        <source src="File 01.mp4" type="video/mp4">
+        Your browser does not support video.
+    </video>
+</div>
+
+<script>
+function playVideo(){
+    let video = document.getElementById("myVideo");
+
+    video.style.display = "block";
+    video.play();
+}
+</script>
+
+</body>
+</html>
