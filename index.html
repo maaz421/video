@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C++ Lab Report Generator</title>
+
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- html2pdf.js library to convert HTML to PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <style>
+        /* Custom print-friendly styling */
+        .pdf-page {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            color: #1e293b;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 min-h-screen flex flex-col items-center p-6">
+
+    <!-- Action Bar / Download Button -->
+    <div class="w-full max-w-4xl flex justify-between items-center bg-white p-4 rounded-xl shadow-md mb-6 border border-slate-200">
+        <div>
+            <h1 class="text-xl font-bold text-slate-800">C++ Lab Report Exporter</h1>
+            <p class="text-sm text-slate-500">Click the button to download the report as a PDF file.</p>
+        </div>
+        <button id="downloadBtn" onclick="generatePDF()" class="bg-sky-600 hover:bg-sky-700 text-white font-semibold px-5 py-2.5 rounded-lg shadow transition duration-200 flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+            </svg>
+            Download PDF
+        </button>
+    </div>
+
+    <!-- PDF Document Content Container -->
+    <div id="pdfContent" class="pdf-page w-full max-w-4xl bg-white p-8 rounded-xl shadow-lg border border-slate-200">
+
+        <!-- Header Banner -->
+        <div class="bg-slate-900 text-white p-6 rounded-lg mb-6">
+            <span class="bg-sky-600 text-white text-xs font-semibold px-2.5 py-1 rounded uppercase tracking-wider">Lab Program & Analysis</span>
+            <h1 class="text-2xl font-bold text-sky-400 mt-2">C++ Algorithms & Complexity Analysis</h1>
+            <p class="text-slate-400 text-sm mt-1">Source code, complexity estimations, corrected errors, and sample outputs.</p>
+        </div>
+
+        <!-- Section 1: Linear Search -->
+        <div class="mb-8 border-b border-slate-200 pb-6">
+            <h2 class="text-lg font-bold text-slate-900 border-b-2 border-sky-500 pb-1 mb-3">1. Linear Search with Complexity Estimation</h2>
+            <p class="text-sm text-slate-600 mb-3"><strong>Problem Statement:</strong> Perform a Linear Search on an array of integers and estimate its step count ($t$) and memory consumption ($s$).</p>
+
+            <h3 class="text-sm font-semibold text-slate-800 mb-1">Corrected C++ Code</h3>
+            <pre class="bg-slate-900 text-slate-100 p-4 rounded-md text-xs font-mono mb-4 overflow-x-auto">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n, i, key, s, t = 0;
+    cout &lt;&lt; "Enter the number of elements: ";
+    cin &gt;&gt; n;
+
+    int a[n];
+    cout &lt;&lt; "Enter elements:\n";
+    t = t + 2;
+    for (i = 0; i &lt; n; i++) {
+        t = t + 2;
+        cin &gt;&gt; a[i];
+    }
+
+    cout &lt;&lt; "Enter element to search: ";
+    cin &gt;&gt; key;
+
+    s = sizeof(n) + sizeof(i) + sizeof(key) + sizeof(s) + sizeof(t) + sizeof(a);
+    cout &lt;&lt; "Space complexity is " &lt;&lt; s &lt;&lt; " bytes\n";
+
+    t = t + 2;
+    for (i = 0; i &lt; n; i++) {
+        t = t + 3;
+        if (a[i] == key) {
+            cout &lt;&lt; "Element found at position " &lt;&lt; i + 1 &lt;&lt; "\n";
+            cout &lt;&lt; "Time complexity count (t) is " &lt;&lt; t &lt;&lt; "\n";
+            return 0;
+        }
+    }
+    cout &lt;&lt; "Element not found\n";
+    cout &lt;&lt; "Time complexity count (t) is " &lt;&lt; t &lt;&lt; "\n";
+    return 0;
+}
+            </pre>
+
+            <h3 class="text-sm font-semibold text-slate-800 mb-1">Sample Output</h3>
+            <div class="bg-zinc-900 border-l-4 border-green-500 text-green-400 p-3 rounded text-xs font-mono">
+                Enter the number of elements: 4<br>
+                Enter elements: 10, 25, 30, 45<br>
+                Enter element to search: 30<br>
+                Space complexity is 40 bytes<br>
+                Element found at position 3<br>
+                Time complexity count (t) is 21
+            </div>
+        </div>
+
+        <!-- Section 2: Fibonacci Series -->
+        <div class="mb-8 border-b border-slate-200 pb-6">
+            <h2 class="text-lg font-bold text-slate-900 border-b-2 border-sky-500 pb-1 mb-3">2. Fibonacci Series with Complexity Estimation</h2>
+            <p class="text-sm text-slate-600 mb-3"><strong>Problem Statement:</strong> Generate the Fibonacci series up to $n$ terms and calculate its complexity parameters.</p>
+
+            <h3 class="text-sm font-semibold text-slate-800 mb-1">Corrected C++ Code</h3>
+            <pre class="bg-slate-900 text-slate-100 p-4 rounded-md text-xs font-mono mb-4 overflow-x-auto">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n, i, a = 0, b = 1, c, t = 0, s;
+    cout &lt;&lt; "Enter number of terms: ";
+    cin &gt;&gt; n;
+
+    s = sizeof(n) + sizeof(i) + sizeof(a) + sizeof(b) + sizeof(c) + sizeof(t) + sizeof(s);
+
+    for (i = 1; i &lt;= n; i++) {
+        t = t + 2;
+        cout &lt;&lt; a &lt;&lt; "\n";
+        c = a + b;
+        a = b;
+        b = c;
+        t = t + 4;
+    }
+
+    cout &lt;&lt; "Time complexity count (t) is " &lt;&lt; t &lt;&lt; "\n";
+    cout &lt;&lt; "Space complexity is " &lt;&lt; s &lt;&lt; " bytes\n";
+    return 0;
+}
+            </pre>
+
+            <h3 class="text-sm font-semibold text-slate-800 mb-1">Sample Output</h3>
+            <div class="bg-zinc-900 border-l-4 border-green-500 text-green-400 p-3 rounded text-xs font-mono">
+                Enter number of terms: 5<br>
+                0<br>1<br>1<br>2<br>3<br>
+                Time complexity count (t) is 30<br>
+                Space complexity is 28 bytes
+            </div>
+        </div>
+
+        <!-- Section 3: Summary Table -->
+        <div>
+            <h2 class="text-lg font-bold text-slate-900 border-b-2 border-sky-500 pb-1 mb-3">3. Complexity Analysis Summary</h2>
+            <table class="w-full text-xs text-left border-collapse">
+                <thead>
+                    <tr class="bg-slate-100 border-b border-slate-300">
+                        <th class="p-2 border">Algorithm</th>
+                        <th class="p-2 border">Step Count ($t$) Formula</th>
+                        <th class="p-2 border">Time Complexity</th>
+                        <th class="p-2 border">Auxiliary Space</th>
+                        <th class="p-2 border">Space Complexity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="border-b">
+                        <td class="p-2 border font-semibold">Linear Search</td>
+                        <td class="p-2 border">$t = 5n + 4$</td>
+                        <td class="p-2 border">$O(n)$</td>
+                        <td class="p-2 border">Fixed variables + Array $a[n]$</td>
+                        <td class="p-2 border">$O(n)$</td>
+                    </tr>
+                    <tr class="border-b bg-slate-50">
+                        <td class="p-2 border font-semibold">Fibonacci Series</td>
+                        <td class="p-2 border">$t = 6n$</td>
+                        <td class="p-2 border">$O(n)$</td>
+                        <td class="p-2 border">7 scalar variables (28 bytes)</td>
+                        <td class="p-2 border">$O(1)$</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <!-- JavaScript PDF Generation Logic -->
+    <script>
+        function generatePDF() {
+            // Get the element containing the content
+            const element = document.getElementById('pdfContent');
+            const button = document.getElementById('downloadBtn');
+
+            // Feedback: Change button text during download
+            button.innerText = 'Generating PDF...';
+            button.disabled = true;
+
+            // PDF Configuration options
+            const opt = {
+                margin:       [10, 10, 10, 10], // top, left, bottom, right margins in mm
+                filename:     'cpp_lab_complexity_report.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2, logging: false },
+                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+
+            // Generate and save PDF
+            html2pdf().set(opt).from(element).save().then(() => {
+                // Reset button state after download starts
+                button.innerHTML = `
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                    Download PDF`;
+                button.disabled = false;
+            });
+        }
+    </script>
+</body>
+</html>
